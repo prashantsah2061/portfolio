@@ -13,9 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const darkModeToggle = document.getElementById('dark-mode-toggle');
     const body = document.body;
     
-    // Check for saved dark mode preference
+    // Check for saved dark mode preference or system preference
     const savedDarkMode = localStorage.getItem('darkMode');
-    if (savedDarkMode === 'true') {
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedDarkMode === 'true' || (savedDarkMode === null && systemPrefersDark)) {
         body.classList.add('dark');
     }
     
@@ -25,7 +27,35 @@ document.addEventListener('DOMContentLoaded', function() {
             body.classList.toggle('dark');
             const isDark = body.classList.contains('dark');
             localStorage.setItem('darkMode', isDark);
+            
+            console.log('Dark mode toggled:', isDark);
+            
+            // Update toggle button icon
+            const sunIcon = this.querySelector('.fa-sun');
+            const moonIcon = this.querySelector('.fa-moon');
+            
+            if (isDark) {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            } else {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            }
         });
+    }
+    
+    // Initialize toggle button state
+    if (darkModeToggle) {
+        const sunIcon = darkModeToggle.querySelector('.fa-sun');
+        const moonIcon = darkModeToggle.querySelector('.fa-moon');
+        
+        if (body.classList.contains('dark')) {
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
+        } else {
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+        }
     }
 
     // Mobile menu toggle
