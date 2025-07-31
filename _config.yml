@@ -1,0 +1,12 @@
+# Jekyll configuration for GitHub Pages
+theme: jekyll-theme-minimal
+plugins:
+  - jekyll-relative-links
+  - jekyll-seo-tag
+
+# Exclude files from processing
+exclude:
+  - .gitignore
+  - DEPLOYMENT.md
+  - README.md
+  - .github/ 
