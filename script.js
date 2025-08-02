@@ -1,7 +1,4 @@
-// Prashant Sah Portfolio Website JavaScript
-
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize AOS (Animate On Scroll)
     AOS.init({
         duration: 1000,
         easing: 'ease-in-out',
@@ -9,11 +6,18 @@ document.addEventListener('DOMContentLoaded', function() {
         mirror: false
     });
 
-    // Dark mode functionality
-    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const contactCards = document.querySelectorAll('.contact-card');
+    contactCards.forEach(card => {
+        card.addEventListener('click', function() {
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
+        });
+    });
+
     const body = document.body;
     
-    // Check for saved dark mode preference or system preference
     const savedDarkMode = localStorage.getItem('darkMode');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
@@ -21,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
         body.classList.add('dark');
     }
     
-    // Dark mode toggle functionality
     if (darkModeToggle) {
         darkModeToggle.addEventListener('click', function() {
             body.classList.toggle('dark');
@@ -30,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             console.log('Dark mode toggled:', isDark);
             
-            // Update toggle button icon
             const sunIcon = this.querySelector('.fa-sun');
             const moonIcon = this.querySelector('.fa-moon');
             
@@ -44,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Initialize toggle button state
     if (darkModeToggle) {
         const sunIcon = darkModeToggle.querySelector('.fa-sun');
         const moonIcon = darkModeToggle.querySelector('.fa-moon');
@@ -58,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Mobile menu toggle
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     
@@ -68,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Close mobile menu when clicking on a link
     const mobileLinks = document.querySelectorAll('#mobile-menu a');
     mobileLinks.forEach(link => {
         link.addEventListener('click', function() {
@@ -76,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Smooth scrolling for navigation links
     const navLinks = document.querySelectorAll('a[href^="#"]');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -85,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetSection = document.querySelector(targetId);
             
             if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
+                const offsetTop = targetSection.offsetTop - 80;
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
@@ -94,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Active navigation link highlighting
     const sections = document.querySelectorAll('section[id]');
     const navLinksArray = document.querySelectorAll('.nav-link');
 
@@ -116,7 +113,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Navbar background change on scroll
     const navbar = document.querySelector('nav');
     window.addEventListener('scroll', function() {
         if (window.scrollY > 50) {
@@ -126,7 +122,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Scroll to top button functionality
     const scrollToTopBtn = document.getElementById('scroll-to-top');
     
     window.addEventListener('scroll', function() {
@@ -146,7 +141,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Skill bars animation
     const skillBars = document.querySelectorAll('.bg-blue-600, .bg-green-600, .bg-purple-600, .bg-pink-600');
     skillBars.forEach(bar => {
         const width = bar.style.width;
@@ -167,105 +161,12 @@ document.addEventListener('DOMContentLoaded', function() {
         skillObserver.observe(bar.parentElement.parentElement);
     });
 
-    // EmailJS is initialized in the HTML head section
 
-    // Form submission
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const submitBtn = document.getElementById('submit-btn');
-            const originalText = submitBtn.innerHTML;
-            
-            // Get form data
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const message = formData.get('message');
-            
-            // Simple validation
-            if (!name || !email || !message) {
-                showNotification('Please fill in all fields', 'error');
-                return;
-            }
-            
-            if (!isValidEmail(email)) {
-                showNotification('Please enter a valid email address', 'error');
-                return;
-            }
-            
-            // Check if EmailJS is available
-            if (typeof emailjs === 'undefined' || !emailjs.send) {
-                showNotification('Email service not available. Opening your email client instead...', 'info');
-                
-                // Fallback: Open email client with pre-filled message
-                const subject = encodeURIComponent('Message from Portfolio Website');
-                const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nMessage: ${message}`);
-                const mailtoLink = `mailto:prashantsah2061@gmail.com?subject=${subject}&body=${body}`;
-                
-                setTimeout(() => {
-                    window.location.href = mailtoLink;
-                }, 1000);
-                return;
-            }
-            
-            // Show loading state
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            submitBtn.disabled = true;
-            
-            // EmailJS template parameters
-            const templateParams = {
-                from_name: name,
-                from_email: email,
-                message: message,
-                to_name: 'Prashant Sah'
-            };
-            
-            console.log('🔍 DEBUG: EmailJS Status Check');
-            console.log('- Protocol:', window.location.protocol);
-            console.log('- Running from local server:', window.location.protocol !== 'file:');
-            console.log('- EmailJS available:', typeof emailjs !== 'undefined');
-            console.log('- EmailJS send method:', typeof emailjs.send);
-            console.log('- Template params:', templateParams);
-            console.log('- Service ID: service_0u0xrel');
-            console.log('- Template ID: template_83if82i');
-            
-            // Send email using EmailJS
-            emailjs.send('service_0u0xrel', 'template_83if82i', templateParams)
-                .then(function(response) {
-                    console.log('✅ SUCCESS: Email sent successfully!', response);
-                    showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
-                    contactForm.reset();
-                }, function(error) {
-                    console.error('❌ ERROR: EmailJS failed!', error);
-                    console.error('Error details:', error.text);
-                    showNotification('EmailJS failed. Opening your email client instead...', 'info');
-                    
-                    // Fallback: Open email client with pre-filled message
-                    const subject = encodeURIComponent('Message from Portfolio Website');
-                    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nMessage: ${message}`);
-                    const mailtoLink = `mailto:prashantsah2061@gmail.com?subject=${subject}&body=${body}`;
-                    
-                    setTimeout(() => {
-                        window.location.href = mailtoLink;
-                    }, 2000);
-                })
-                .finally(function() {
-                    // Reset button
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                });
-        });
-    }
-
-    // Email validation
     function isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     }
 
-    // Notification system
     function showNotification(message, type = 'info') {
         const notification = document.createElement('div');
         notification.className = `fixed top-20 right-4 z-50 p-4 rounded-lg shadow-lg transition-all duration-300 transform translate-x-full`;
@@ -281,12 +182,10 @@ document.addEventListener('DOMContentLoaded', function() {
         notification.textContent = message;
         document.body.appendChild(notification);
         
-        // Animate in
         setTimeout(() => {
             notification.classList.remove('translate-x-full');
         }, 100);
         
-        // Remove after 5 seconds
         setTimeout(() => {
             notification.classList.add('translate-x-full');
             setTimeout(() => {
@@ -297,31 +196,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     }
 
-    // Add profile image hover effect
     const profileImage = document.querySelector('img[alt="Prashant Sah"]');
     if (profileImage) {
         profileImage.classList.add('profile-image');
     }
 
-    // Add project card hover effects
     const projectCards = document.querySelectorAll('.bg-white.rounded-lg.shadow-lg, .dark\\:bg-gray-700.rounded-lg.shadow-lg');
     projectCards.forEach(card => {
         card.classList.add('project-card');
     });
 
-    // Add skill card hover effects
     const skillCards = document.querySelectorAll('.bg-white.dark\\:bg-gray-800.p-6.rounded-lg');
     skillCards.forEach(card => {
         card.classList.add('skill-card');
     });
 
-    // Add experience card hover effects
     const experienceCards = document.querySelectorAll('.bg-white.dark\\:bg-gray-800.p-6.rounded-lg');
     experienceCards.forEach(card => {
         card.classList.add('experience-card');
     });
 
-    // Typing effect for hero section
     const heroTitle = document.querySelector('#home h1');
     if (heroTitle) {
         const text = heroTitle.innerHTML;
@@ -337,11 +231,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
         
-        // Start typing effect after a short delay
         setTimeout(typeWriter, 500);
     }
 
-    // Parallax effect for hero section
     window.addEventListener('scroll', function() {
         const scrolled = window.pageYOffset;
         const heroSection = document.querySelector('#home');
@@ -351,12 +243,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Add loading animation to buttons
     const buttons = document.querySelectorAll('button');
     buttons.forEach(button => {
         button.addEventListener('click', function() {
-            if (this.textContent.includes('Download') || this.id === 'dark-mode-toggle' || this.id === 'scroll-to-top') {
-                return; // Don't add loading to specific buttons
+                    if (this.textContent.includes('Download') || this.id === 'dark-mode-toggle' || this.id === 'scroll-to-top') {
+            return;
             }
             
             const originalText = this.innerHTML;
@@ -370,35 +261,29 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Add social media icon hover effects
     const socialIcons = document.querySelectorAll('.fab');
     socialIcons.forEach(icon => {
         icon.classList.add('social-icon');
     });
 
-    // Add form input focus effects
     const formInputs = document.querySelectorAll('input, textarea');
     formInputs.forEach(input => {
         input.classList.add('contact-form');
     });
 
-    // Add animated button effects
     const animatedButtons = document.querySelectorAll('button:not(#dark-mode-toggle):not(#scroll-to-top)');
     animatedButtons.forEach(button => {
         button.classList.add('animated-button');
     });
 });
 
-// Resume download functionality with Prashant's actual information
 function downloadResume() {
     const downloadBtn = document.querySelector('button[onclick="downloadResume()"]');
     const originalText = downloadBtn.innerHTML;
     
-    // Show loading state
     downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
     downloadBtn.disabled = true;
     
-    // Create resume content based on Prashant's actual information
     const resumeContent = `
 Prashant Sah
 Data Science Enthusiast | Full Stack Developer | Python Programmer
@@ -493,7 +378,6 @@ CERTIFICATIONS & AWARDS
 • St. Thomas Aquinas Scholarship Recipient
     `;
     
-    // Create blob and download
     const blob = new Blob([resumeContent], { type: 'text/plain' });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -504,17 +388,14 @@ CERTIFICATIONS & AWARDS
     document.body.removeChild(a);
     window.URL.revokeObjectURL(url);
     
-    // Reset button after download
     setTimeout(() => {
         downloadBtn.innerHTML = originalText;
         downloadBtn.disabled = false;
         
-        // Show success notification
         showNotification('Resume downloaded successfully!', 'success');
     }, 1000);
 }
 
-// Global notification function
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
     notification.className = `fixed top-20 right-4 z-50 p-4 rounded-lg shadow-lg transition-all duration-300 transform translate-x-full`;
@@ -530,12 +411,10 @@ function showNotification(message, type = 'info') {
     notification.textContent = message;
     document.body.appendChild(notification);
     
-    // Animate in
     setTimeout(() => {
         notification.classList.remove('translate-x-full');
     }, 100);
     
-    // Remove after 5 seconds
     setTimeout(() => {
         notification.classList.add('translate-x-full');
         setTimeout(() => {
