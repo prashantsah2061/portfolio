@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const body = document.body;
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
     
     const savedDarkMode = localStorage.getItem('darkMode');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -26,12 +27,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     if (darkModeToggle) {
-        darkModeToggle.addEventListener('click', function() {
+        darkModeToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
             body.classList.toggle('dark');
             const isDark = body.classList.contains('dark');
             localStorage.setItem('darkMode', isDark);
-            
-            console.log('Dark mode toggled:', isDark);
             
             const sunIcon = this.querySelector('.fa-sun');
             const moonIcon = this.querySelector('.fa-moon');
@@ -44,9 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 moonIcon.classList.add('hidden');
             }
         });
-    }
-    
-    if (darkModeToggle) {
+        
+        // Set initial icon state
         const sunIcon = darkModeToggle.querySelector('.fa-sun');
         const moonIcon = darkModeToggle.querySelector('.fa-moon');
         
