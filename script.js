@@ -280,121 +280,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function downloadResume() {
     const downloadBtn = document.querySelector('button[onclick="downloadResume()"]');
-    const originalText = downloadBtn.innerHTML;
-    
-    downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
-    downloadBtn.disabled = true;
-    
-    const resumeContent = `
-Prashant Sah
-Data Science Enthusiast | Full Stack Developer | Python Programmer
+    const originalText = downloadBtn ? downloadBtn.innerHTML : null;
 
-CONTACT INFORMATION
-Email: prashantsah2061@gmail.com
-Phone: (862)-409-1631
-Location: Bloomfield, NJ
-LinkedIn: linkedin.com/in/prashantsah
-GitHub: github.com/prashantsah2061
+    if (downloadBtn) {
+        downloadBtn.disabled = true;
+        downloadBtn.innerHTML = '<i class="fas fa-clock"></i> Coming soon';
+    }
 
-PROFESSIONAL SUMMARY
-I'm a passionate student and self-taught developer currently exploring the fields of data science and web development. I love building meaningful tools that solve real-world problems. Currently working toward a data science internship by Summer 2026 while building practical tools to showcase my skills.
+    showNotification('Resume will be uploaded soon.', 'info');
 
-EDUCATION
-Bachelor's of Science, Computer Science
-Caldwell University • Caldwell, NJ
-August 2023 - May 2027
-
-Achievements:
-• Dean's List, Honors Award Recipient
-• Presidential Scholarship Recipient
-• St. Thomas Aquinas Scholarship Recipient
-
-Core Courses: Data Structures, Web Development, Machine Learning, Databases
-
-EXPERIENCE
-Peer Tutor | Academic Success Center
-Caldwell University • Caldwell, NJ
-September 2024 - Present
-• Provided academic support to students in Computer Science courses, including programming, algorithms, and data structures
-• Customized tutoring approaches to match individual learning styles and foster independent problem-solving skills
-• Promoted critical thinking by guiding students through debugging strategies and conceptual understanding
-• Contributed to improved academic performance across the department
-
-Media Services Tech (IT Department)
-Caldwell University • Caldwell, NJ
-Current
-• Responsible for the setup, configuration, and support of audio-visual (AV) systems during campus-wide events, lectures, and classroom activities
-• Worked closely with faculty and staff to ensure seamless technical operations, including projector systems, microphones, and live recordings
-• Diagnosed and resolved real-time tech issues, playing a key role in maintaining the university's IT infrastructure for academic and public events
-
-Barnes & Noble Campus Store Team Member
-Caldwell University • Caldwell, NJ
-July 2024 - Present
-• Assisted students and faculty with retail, textbook selection, and order fulfillment, ensuring accurate and timely distribution of course materials
-• Collaborated with professors to align inventory with current syllabi and course needs
-• Delivered excellent customer service while managing daily store operations, POS systems, and inventory restocking during peak academic periods
-
-Teaching Assistant – CS 196
-Caldwell University • Caldwell, NJ
-Spring 2025 - Present
-• Assisted in teaching CS 196: Introduction to Programming, supporting over 25 students through lab sessions, office hours, and one-on-one mentoring
-• Helped explain core concepts in Python programming, debugging, logic building, and algorithmic thinking
-• Collaborated with faculty to grade assignments, design practice problems, and enhance course material for better student engagement and understanding
-
-PROJECTS
-California Housing Price Predictor
-• A regression-based ML model that predicts house prices using California census data
-• Technologies: Python, Scikit-learn, Pandas, Matplotlib
-• GitHub: github.com/prashantsah2061
-
-Room Rental Platform
-• A full-stack app for users to post, browse, and book rooms with secure authentication
-• Technologies: React, Node.js, MongoDB
-• Status: In development — deployed soon
-
-Wildfire Risk Prediction Tool
-• An ML + mapping tool that predicts wildfire zones in Nepal using NASA FIRMS and weather APIs
-• Technologies: Python, Folium, NASA API
-• Status: In progress — map using Folium
-
-Tic-Tac-Toe Game with Speech Integration
-• Developed a voice-controlled Tic-Tac-Toe game using Kivy, enabling players to make moves by speaking numbers
-• Technologies: Python, Kivy, Speech Recognition (Google API), PyInstaller
-• Features: Hands-free gameplay using speech-to-text recognition, interactive UI designed with Kivy, single-player mode with AI and multiplayer mode, implemented noise filtering for improved speech accuracy, packaged into an executable for easy distribution
-
-TECHNICAL SKILLS
-Programming Languages: Python, JavaScript, HTML, CSS
-Data Science: Scikit-learn, Pandas, Matplotlib
-Tools: Git & GitHub, VS Code, Jupyter
-Domains: Web Development, Machine Learning, Data Visualization
-
-LANGUAGES
-• English (Native)
-• Hindi (Fluent)
-• Spanish (Intermediate)
-
-CERTIFICATIONS & AWARDS
-• Dean's List, Honors Award Recipient
-• Presidential Scholarship Recipient
-• St. Thomas Aquinas Scholarship Recipient
-    `;
-    
-    const blob = new Blob([resumeContent], { type: 'text/plain' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'Prashant_Sah_Resume.txt';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    window.URL.revokeObjectURL(url);
-    
     setTimeout(() => {
-        downloadBtn.innerHTML = originalText;
-        downloadBtn.disabled = false;
-        
-        showNotification('Resume downloaded successfully!', 'success');
-    }, 1000);
+        if (downloadBtn && originalText !== null) {
+            downloadBtn.innerHTML = originalText;
+            downloadBtn.disabled = false;
+        }
+    }, 1500);
 }
 
 function showNotification(message, type = 'info') {
