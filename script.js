@@ -284,17 +284,43 @@ function downloadResume() {
 
     if (downloadBtn) {
         downloadBtn.disabled = true;
-        downloadBtn.innerHTML = '<i class="fas fa-clock"></i> Coming soon';
+        downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
     }
 
-    showNotification('Resume will be uploaded soon.', 'info');
-
-    setTimeout(() => {
-        if (downloadBtn && originalText !== null) {
-            downloadBtn.innerHTML = originalText;
-            downloadBtn.disabled = false;
-        }
-    }, 1500);
+    try {
+        // Create a link element to trigger download
+        const link = document.createElement('a');
+        link.href = 'resume.pdf'; // Make sure you have a resume.pdf file in your project root
+        link.download = 'Prashant_Sah_Resume.pdf';
+        link.style.display = 'none';
+        
+        // Add to DOM, click, and remove
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        showNotification('Resume downloaded successfully!', 'success');
+        
+        // Reset button after successful download
+        setTimeout(() => {
+            if (downloadBtn && originalText !== null) {
+                downloadBtn.innerHTML = originalText;
+                downloadBtn.disabled = false;
+            }
+        }, 1000);
+        
+    } catch (error) {
+        console.error('Download failed:', error);
+        showNotification('Download failed. Please try again.', 'error');
+        
+        // Reset button on error
+        setTimeout(() => {
+            if (downloadBtn && originalText !== null) {
+                downloadBtn.innerHTML = originalText;
+                downloadBtn.disabled = false;
+            }
+        }, 1500);
+    }
 }
 
 function showNotification(message, type = 'info') {
