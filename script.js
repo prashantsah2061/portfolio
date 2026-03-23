@@ -290,7 +290,7 @@ function downloadResume() {
     try {
         // Create a link element to trigger download
         const link = document.createElement('a');
-        link.href = 'resume.pdf'; // Make sure you have a resume.pdf file in your project root
+        link.href = 'resume.pdf';
         link.download = 'Prashant_Sah_Resume.pdf';
         link.style.display = 'none';
         
