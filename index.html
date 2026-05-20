@@ -1,672 +1,529 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prashant Sah - Data Science | Machine Learning Enthusiast </title>
-    <meta name="description"
-        content="Prashant Sah - Data Science and Machine Learning Enthusiast. Student developer passionate about building meaningful tools and exploring AI/ML technologies.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prashant Sah — Data Science & ML</title>
+  <meta name="description" content="Prashant Sah — Data Science and Machine Learning student at Caldwell University. Building real tools, exploring AI/ML.">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'poppins': ['Poppins', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
-
-
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
+<body>
 
-<body
-    class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-['Poppins'] transition-colors duration-300">
-    <nav
-        class="fixed top-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg z-50 transition-all duration-300">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">Prashant Sah</div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home"
-                        class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
-                    <a href="#about"
-                        class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
-                    <a href="#skills"
-                        class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Skills</a>
-                    <a href="#projects"
-                        class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
-                    <a href="#experience"
-                        class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Experience</a>
-                    <a href="#contact"
-                        class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <button id="dark-mode-toggle"
-                        class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                        <i class="fas fa-sun text-yellow-500 dark:hidden"></i>
-                        <i class="fas fa-moon text-blue-400 hidden dark:block"></i>
-                    </button>
-                    <button id="mobile-menu-btn"
-                        class="md:hidden text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-            <div id="mobile-menu" class="md:hidden hidden pb-4">
-                <div class="flex flex-col space-y-4">
-                    <a href="#home"
-                        class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
-                    <a href="#about"
-                        class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
-                    <a href="#skills"
-                        class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Skills</a>
-                    <a href="#projects"
-                        class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
-                    <a href="#experience"
-                        class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Experience</a>
-                    <a href="#contact"
-                        class="nav-link hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
-                </div>
-            </div>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<div id="progress"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">ps / portfolio</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" class="mm-link">About</a>
+  <a href="#skills" class="mm-link">Skills</a>
+  <a href="#projects" class="mm-link">Projects</a>
+  <a href="#experience" class="mm-link">Experience</a>
+  <a href="#contact" class="mm-link">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg-grid"></div>
+
+  <div class="hero-left">
+    <div class="hero-badge">Undergraduate Researcher · Prospective PhD Applicant</div>
+    <h1 class="hero-name">Prashant<br><em>Sah</em></h1>
+    <p class="hero-title">// Machine Learning · Sequence Modeling · Research</p>
+    <p class="hero-bio">
+      CS student at Caldwell University, double minoring in Mathematics and Business Analytics.
+      I conduct ML research on LSTMs, Transformers, and State Space Models — driven by a deep
+      interest in understanding how intelligent systems learn from sequences.
+    </p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="downloadResume()"><i class="fas fa-download"></i> Resume</button>
+      <a href="#projects" class="btn-outline">See my work →</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-img-wrapper">
+      <img src="my_image.png" alt="Prashant Sah">
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Projects</div>
         </div>
-    </nav>
-
-    <section id="home"
-        class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20">
-        <div class="container mx-auto px-4 text-center">
-            <div class="max-w-4xl mx-auto">
-                <div class="mb-8" data-aos="fade-down" data-aos-duration="1000">
-                    <img src="my_image.png" alt="Prashant Sah"
-                        class="w-48 h-48 rounded-full mx-auto mb-8 shadow-2xl border-4 border-white dark:border-gray-700 profile-image object-cover object-top">
-                </div>
-                <h1 class="text-5xl md:text-7xl font-bold text-gray-800 dark:text-white mb-6" data-aos="fade-up"
-                    data-aos-delay="200">
-                    Hi, I'm Prashant Sah
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4" data-aos="fade-up"
-                    data-aos-delay="400">
-                    Data Science/ Machine Learning Enthusiast
-                </p>
-                <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto" data-aos="fade-up"
-                    data-aos-delay="600">
-                    I'm a passionate student and currently exploring the fields of data science/ Machine Learning. I
-                    love building meaningful tools that solve real-world problems.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="800">
-                    <button onclick="downloadResume()"
-                        class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                        <i class="fas fa-download"></i>
-                        Download Resume
-                    </button>
-                    <a href="#projects"
-                        class="border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 px-8 py-3 rounded-lg hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 dark:hover:text-gray-900 transition-all duration-300">
-                        View My Projects
-                    </a>
-                </div>
-            </div>
+        <div class="stat-item">
+          <div class="stat-num">8</div>
+          <div class="stat-label">Roles</div>
         </div>
-    </section>
-
-    <section id="about" class="py-20 bg-white dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800 dark:text-white" data-aos="fade-up">About Me
-            </h2>
-            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right">
-                    <div class="space-y-6">
-                        <img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" alt="Coding animation GIF"
-                            class="w-full rounded-2xl shadow-lg object-cover">
-                    </div>
-                </div>
-                <div data-aos="fade-left">
-                    <h3 class="text-2xl font-semibold mb-6 text-gray-800 dark:text-white">Passionate Student & Developer
-                    </h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                        I'm currently a student, peer tutor, and Media Services Tech at my university. I'm working
-                        toward a data science internship by Summer 2026 while building practical tools to showcase my
-                        skills.
-                    </p>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                        My journey in technology started with curiosity and has evolved into a passion for solving
-                        real-world problems through innovative software solutions. I believe in writing code that not
-                        only works but is also maintainable and scalable.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div
-                            class="text-center p-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-600 rounded-lg">
-                            <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">2027</div>
-                            <div class="text-gray-600 dark:text-gray-300">Graduation Year</div>
-                        </div>
-                        <div
-                            class="text-center p-4 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-700 dark:to-gray-600 rounded-lg">
-                            <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">2+</div>
-                            <div class="text-gray-600 dark:text-gray-300">experience</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="stat-item">
+          <div class="stat-num">'27</div>
+          <div class="stat-label">Grad</div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
 
-    <section id="skills" class="py-20 bg-gray-50 dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800 dark:text-white" data-aos="fade-up">Skills &
-                Technologies</h2>
-            <div class="max-w-6xl mx-auto">
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
-                        data-aos="zoom-in" data-aos-delay="100">
-                        <div class="text-center mb-4">
-                            <i class="fab fa-python text-4xl text-blue-600 dark:text-blue-400 mb-3"></i>
-                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Programming</h3>
-                        </div>
-                        <div class="space-y-2">
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm text-gray-600 dark:text-gray-300">Python</span>
-                                <div class="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm text-gray-600 dark:text-gray-300">JavaScript</span>
-                                <div class="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm text-gray-600 dark:text-gray-300">HTML/CSS</span>
-                                <div class="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 95%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  <div class="hero-scroll-hint">scroll to explore</div>
+</section>
 
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
-                        data-aos="zoom-in" data-aos-delay="200">
-                        <div class="text-center mb-4">
-                            <i class="fas fa-chart-line text-4xl text-green-600 dark:text-green-400 mb-3"></i>
-                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Data Science</h3>
-                        </div>
-                        <div class="space-y-2">
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm text-gray-600 dark:text-gray-300">Scikit-learn</span>
-                                <div class="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                                    <div class="bg-green-600 h-2 rounded-full" style="width: 80%"></div>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm text-gray-600 dark:text-gray-300">Pandas</span>
-                                <div class="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                                    <div class="bg-green-600 h-2 rounded-full" style="width: 85%"></div>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm text-gray-600 dark:text-gray-300">Matplotlib</span>
-                                <div class="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                                    <div class="bg-green-600 h-2 rounded-full" style="width: 75%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header reveal">
+    <span class="section-tag">01</span>
+    <h2 class="section-title">About Me</h2>
+    <div class="section-rule"></div>
+  </div>
 
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
-                        data-aos="zoom-in" data-aos-delay="300">
-                        <div class="text-center mb-4">
-                            <i class="fas fa-tools text-4xl text-purple-600 dark:text-purple-400 mb-3"></i>
-                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Tools</h3>
-                        </div>
-                        <div class="space-y-2">
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm text-gray-600 dark:text-gray-300">Git & GitHub</span>
-                                <div class="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                                    <div class="bg-purple-600 h-2 rounded-full" style="width: 90%"></div>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm text-gray-600 dark:text-gray-300">VS Code</span>
-                                <div class="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                                    <div class="bg-purple-600 h-2 rounded-full" style="width: 95%"></div>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm text-gray-600 dark:text-gray-300">Jupyter</span>
-                                <div class="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                                    <div class="bg-purple-600 h-2 rounded-full" style="width: 85%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
-                        data-aos="zoom-in" data-aos-delay="400">
-                        <div class="text-center mb-4">
-                            <i class="fas fa-laptop-code text-4xl text-pink-600 dark:text-pink-400 mb-3"></i>
-                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Domains</h3>
-                        </div>
-                        <div class="space-y-2">
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm text-gray-600 dark:text-gray-300">Data Science</span>
-                                <div class="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                                    <div class="bg-pink-600 h-2 rounded-full" style="width: 85%"></div>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm text-gray-600 dark:text-gray-300">Machine Learning</span>
-                                <div class="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                                    <div class="bg-pink-600 h-2 rounded-full" style="width: 80%"></div>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm text-gray-600 dark:text-gray-300">Data Visualization</span>
-                                <div class="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                                    <div class="bg-pink-600 h-2 rounded-full" style="width: 75%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>
+        I'm a junior at Caldwell University studying Computer Science, with a double minor in
+        Mathematics and Business Analytics. I do undergraduate research under Prof. Veksler
+        comparing sequence-modeling architectures — LSTMs, Transformers, and State Space Models (Mamba) —
+        and I genuinely enjoy reading papers, running experiments, and writing up what I find.
+      </p>
+      <div class="about-highlight">
+        "Passionate about research at the intersection of deep learning and sequence modeling."
+      </div>
+      <p>
+        My goal is to pursue a PhD in Machine Learning or Computer Science, where I can deepen
+        my work on model efficiency, long-range dependency, and the theory behind why certain
+        architectures generalize better than others.
+      </p>
+      <div class="about-facts">
+        <div class="fact">
+          <div class="fact-label">Location</div>
+          <div class="fact-value">Caldwell, NJ</div>
         </div>
-    </section>
-
-    <section id="projects" class="py-20 bg-white dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800 dark:text-white" data-aos="fade-up">Featured
-                Projects</h2>
-            <div class="max-w-4xl mx-auto space-y-8">
-
-
-
-                <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 project-card"
-                    data-aos="fade-up" data-aos-delay="200">
-                    <div class="flex flex-col md:flex-row">
-                        <div
-                            class="md:w-1/3 bg-gradient-to-br from-green-500 to-green-700 p-6 flex items-center justify-center">
-                            <i class="fas fa-video text-white text-4xl"></i>
-                        </div>
-                        <div class="md:w-2/3 p-6">
-                            <h3 class="text-2xl font-semibold mb-3 text-gray-800 dark:text-white">Next Word Predictor | PyTorch, LSTM, NLTK</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4">Built an LSTM-based next-word prediction model using PyTorch, including tokenization and sequence generation as part of a complete NLP pipeline. The model was trained for 50 epochs using the Adam optimizer, achieving 99.52% accuracy. It also supports text generation for autocomplete-style predictions.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span
-                                    class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Python</span>
-                                <span
-                                    class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">Pandas</span>
-                                <span
-                                    class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">Scikit-learn</span>
-                                <span
-                                    class="px-3 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 rounded-full text-sm">OpenAI
-                                    Whisper</span>
-                            </div>
-                            <div class="flex gap-2">
-                                <a href="#"
-                                    class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-
-                <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 project-card"
-                data-aos="fade-up" data-aos-delay="200">
-                <div class="flex flex-col md:flex-row">
-                    <div
-                        class="md:w-1/3 bg-gradient-to-br from-green-500 to-green-700 p-6 flex items-center justify-center">
-                        <i class="fas fa-video text-white text-4xl"></i>
-                    </div>
-                    <div class="md:w-2/3 p-6">
-                        <h3 class="text-2xl font-semibold mb-3 text-gray-800 dark:text-white">Video Content RAG
-                            System</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">Engineered end-to-end ML pipelines using
-                            Python, pandas, and scikit-learn for automated data preprocessing, feature extraction,
-                            and model training with NLP workflows.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span
-                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Python</span>
-                            <span
-                                class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">Pandas</span>
-                            <span
-                                class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">Scikit-learn</span>
-                            <span
-                                class="px-3 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 rounded-full text-sm">OpenAI
-                                Whisper</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <a href="#"
-                                class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-                <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 project-card"
-                    data-aos="fade-up" data-aos-delay="100">
-                    <div class="flex flex-col md:flex-row">
-                        <div
-                            class="md:w-1/3 bg-gradient-to-br from-blue-500 to-blue-700 p-6 flex items-center justify-center">
-                            <i class="fas fa-home text-white text-4xl"></i>
-                        </div>
-                        <div class="md:w-2/3 p-6">
-                            <h3 class="text-2xl font-semibold mb-3 text-gray-800 dark:text-white">California Housing
-                                Price Predictor</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4">Built a machine learning web app using
-                                 and Random Forest Regressor to perform data-driven house price prediction across
-                                California with automated preprocessing pipelines.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span
-                                    class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Python</span>
-                                <span
-                                    class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">Flask</span>
-                                <span
-                                    class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">Pandas</span>
-                                <span
-                                    class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">NumPy</span>
-                                <span
-                                    class="px-3 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 rounded-full text-sm">Bootstrap</span>
-                            </div>
-                            <div class="flex gap-4">
-                                <a href="https://github.com/prashantsah2061/California-house-pricing"
-                                    class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium">GitHub</a>
-                                <a href="https://lnkd.in/gj7pV-sx" target="_blank" rel="noopener noreferrer"
-                                    class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium">Demo</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-               
-
-
-
-
-
-                
-                <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 project-card"
-                    data-aos="fade-up" data-aos-delay="300">
-                    <div class="flex flex-col md:flex-row">
-                        <div
-                            class="md:w-1/3 bg-gradient-to-br from-red-500 to-red-700 p-6 flex items-center justify-center">
-                            <i class="fas fa-fire text-white text-4xl"></i>
-                        </div>
-                        <div class="md:w-2/3 p-6">
-                            <h3 class="text-2xl font-semibold mb-3 text-gray-800 dark:text-white">Wildfire Risk
-                                Prediction Tool</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4">An ML + mapping tool that predicts wildfire
-                                zones using NASA FIRMS and weather APIs with interactive Folium visualizations.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span
-                                    class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Python</span>
-                                <span
-                                    class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">Folium</span>
-                                <span
-                                    class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full text-sm">NASA
-                                    API</span>
-                                <span
-                                    class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">Machine
-                                    Learning</span>
-                            </div>
-                            <div class="flex gap-2">
-                                <span class="text-orange-600 dark:text-orange-400 font-medium">Coming Soon</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <div class="fact">
+          <div class="fact-label">Goal</div>
+          <div class="fact-value">PhD in ML / CS</div>
         </div>
-    </section>
-
-    <section id="experience" class="py-20 bg-gray-50 dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800 dark:text-white" data-aos="fade-up">Experience
-            </h2>
-            <div class="max-w-4xl mx-auto space-y-8">
-
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                    data-aos="fade-left">
-                    <div class="flex items-start space-x-4">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-laptop-code text-yellow-600 dark:text-yellow-400 text-xl"></i>
-                            </div>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Teaching Assistant – CS 196
-                                & CS 302</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-2">Caldwell University • Caldwell, NJ</p>
-                            <p class="text-gray-500 dark:text-gray-400 mb-3">Jan 2025 – Dec 2025</p>
-                            <p class="text-gray-600 dark:text-gray-300">Assisted in developing and grading Python
-                                programming assignments for 50+ students in Programming II - CS 196, covering OOP,
-                                recursion, and GUI concepts. Conducted lab sessions for 50+ students on their
-                                assignments and lab works. Supported instruction for 15 students in CS 302 on algorithm
-                                design, graph theory, and computational problem-solving. Reviewed and debugged student
-                                code to enhance efficiency, readability, and analytical accuracy.</p>
-                        </div>
-                    </div>
-                </div>
-
-
-               
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                    data-aos="fade-left">
-                    <div class="flex items-start space-x-4">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-cogs text-green-600 dark:text-green-400 text-xl"></i>
-                            </div>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Student Tech - IT Department
-                            </h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-2">Caldwell University • Caldwell, NJ</p>
-                            <p class="text-gray-500 dark:text-gray-400 mb-3">July 2024 – Present</p>
-                            <p class="text-gray-600 dark:text-gray-300">Supported campus-wide AV and IT systems,
-                                ensuring reliable data and technology operations. Assisted faculty and students with
-                                troubleshooting university portal and system access issues. Rebuilt and configured
-                                computers, optimizing system performance and data processing efficiency. Collaborated
-                                with IT staff to maintain hardware, software, and network integrity for data-driven
-                                tasks.</p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                data-aos="fade-right">
-                <div class="flex items-start space-x-4">
-                    <div class="flex-shrink-0">
-                        <div
-                            class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-chalkboard-teacher text-blue-600 dark:text-blue-400 text-xl"></i>
-                        </div>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Peer Tutor - Academic
-                            Success Center</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-2">Caldwell University • Caldwell, NJ</p>
-                        <p class="text-gray-500 dark:text-gray-400 mb-3">Sept 2024 – Present</p>
-                        <p class="text-gray-600 dark:text-gray-300">Tutored 25+ students on one to one sessions on
-                            Discrete math, programming I and II, strengthening their computational and
-                            problem-solving skills. </p>
-                    </div>
-                </div>
-            </div>
-
-
-
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                    data-aos="fade-right">
-                    <div class="flex items-start space-x-4">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-store text-purple-600 dark:text-purple-400 text-xl"></i>
-                            </div>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Barnes & Noble Campus Store
-                                Team Member</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-2">Caldwell University • Caldwell, NJ</p>
-                            <p class="text-gray-500 dark:text-gray-400 mb-3">July 2024 - Present</p>
-                            <p class="text-gray-600 dark:text-gray-300">Managed textbook and inventory data to ensure
-                                accurate tracking and timely order fulfillment. Assisted in coordinating course
-                                materials by analyzing syllabus requirements and sales trends. Operated POS and digital
-                                inventory systems with attention to data accuracy and efficiency.</p>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
+        <div class="fact">
+          <div class="fact-label">Research Area</div>
+          <div class="fact-value">Sequence Modeling</div>
         </div>
-    </section>
-
-    <section id="education" class="py-20 bg-white dark:bg-gray-800">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800 dark:text-white" data-aos="fade-up">Education
-            </h2>
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-700 dark:to-gray-600 p-8 rounded-lg shadow-lg"
-                    data-aos="zoom-in">
-                    <div class="text-center mb-6">
-                        <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-2">B.S. in Computer Science
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-300">Caldwell University • Caldwell, NJ</p>
-                        <p class="text-gray-500 dark:text-gray-400">August 2023 - May 2027</p>
-                    </div>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-3">Core Courses</h4>
-                            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Data
-                                    Structures & Algorithms</li>
-                                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Web
-                                    Development</li>
-                                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Database
-                                    Management</li>
-                                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Calculus
-                                </li>
-                                <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Artificial
-                                    Intelligence</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-3">Achievements</h4>
-                            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                                <li class="flex items-center"><i class="fas fa-trophy text-yellow-500 mr-2"></i>Dean's
-                                    List</li>
-                                <li class="flex items-center"><i class="fas fa-award text-yellow-500 mr-2"></i>Honors
-                                    Award Recipient</li>
-                                <li class="flex items-center"><i
-                                        class="fas fa-medal text-yellow-500 mr-2"></i>Presidential Scholarship</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="fact">
+          <div class="fact-label">Graduation</div>
+          <div class="fact-value">May 2027</div>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-900">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl font-bold mb-8 text-gray-800 dark:text-white" data-aos="fade-up">Get In Touch</h2>
-            <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-12" data-aos="fade-up" data-aos-delay="100">
-                I'm always interested in new opportunities and exciting projects. Feel free to reach out for
-                collaborations or just to say hello!
-            </p>
-
-            <div class="space-y-6 max-w-lg mx-auto" data-aos="fade-up" data-aos-delay="200">
-                <!-- Email -->
-                <div class="flex items-center justify-center space-x-4">
-                    <i class="fas fa-envelope text-blue-600 dark:text-blue-400 text-xl"></i>
-                    <a href="mailto:prashantsah2061@gmail.com" class="hover:text-blue-600 dark:hover:text-blue-400">
-                        prashantsah2061@gmail.com
-                    </a>
-                </div>
-
-                <!-- LinkedIn -->
-                <div class="flex items-center justify-center space-x-4">
-                    <i class="fab fa-linkedin text-blue-600 dark:text-blue-400 text-xl"></i>
-                    <a href="https://linkedin.com/in/prashantsah" target="_blank" rel="noopener noreferrer"
-                        class="hover:text-blue-600 dark:hover:text-blue-400">
-                        linkedin.com/in/prashantsah
-                    </a>
-                </div>
-
-                <!-- GitHub -->
-                <div class="flex items-center justify-center space-x-4">
-                    <i class="fab fa-github text-gray-800 dark:text-gray-200 text-xl"></i>
-                    <a href="https://github.com/prashantsah2061" target="_blank" rel="noopener noreferrer"
-                        class="hover:text-gray-800 dark:hover:text-gray-200">
-                        github.com/prashantsah2061
-                    </a>
-                </div>
-            </div>
-
-            <!-- Buttons -->
-            <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="300">
-                <a href="mailto:prashantsah2061@gmail.com"
-                    class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                    <i class="fas fa-envelope mr-2"></i> Send Email
-                </a>
-                <a href="https://linkedin.com/in/prashantsah" target="_blank" rel="noopener noreferrer"
-                    class="px-6 py-3 border-2 border-blue-600 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-600 hover:text-white transition-colors">
-                    <i class="fab fa-linkedin mr-2"></i> Connect on LinkedIn
-                </a>
-            </div>
+    <div class="reveal reveal-delay-2">
+      <div class="about-education">
+        <div class="edu-school">Caldwell University</div>
+        <div class="edu-degree">B.S. Computer Science</div>
+        <div class="edu-period">Double Minor: Mathematics · Business Analytics &nbsp;|&nbsp; Aug 2023 → May 2027</div>
+        <ul class="edu-items">
+          <li>Data Structures &amp; Algorithms</li>
+          <li>Artificial Intelligence</li>
+          <li>Database Management</li>
+          <li>Web Development</li>
+          <li>Calculus &amp; Discrete Mathematics</li>
+        </ul>
+        <div class="achievements">
+          <div class="achievement"><span class="achievement-icon">★</span> Dean's List</div>
+          <div class="achievement"><span class="achievement-icon">★</span> Honors Award Recipient</div>
+          <div class="achievement"><span class="achievement-icon">★</span> Presidential Scholarship</div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header reveal">
+    <span class="section-tag">02</span>
+    <h2 class="section-title">Skills</h2>
+    <div class="section-rule"></div>
+  </div>
 
-    <button id="scroll-to-top"
-        class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 opacity-0 invisible">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+  <div class="skills-layout reveal">
+    <div class="skill-block">
+      <div class="skill-block-icon"><i class="fab fa-python"></i></div>
+      <div class="skill-block-name">Languages</div>
+      <div class="skill-tags">
+        <span class="stag">Python</span>
+        <span class="stag">JavaScript</span>
+        <span class="stag">SQL / MySQL</span>
+        <span class="stag">C</span>
+        <span class="stag">HTML / CSS</span>
+        <span class="stag">R</span>
+      </div>
+    </div>
 
-    <footer class="bg-gray-800 dark:bg-gray-950 text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <div class="flex justify-center space-x-6 mb-4">
-                <a href="https://github.com/prashantsah2061" class="text-gray-400 hover:text-white transition-colors">
-                    <i class="fab fa-github text-2xl"></i>
-                </a>
-                <a href="https://linkedin.com/in/prashantsah" class="text-gray-400 hover:text-white transition-colors">
-                    <i class="fab fa-linkedin text-2xl"></i>
-                </a>
-            </div>
-            <p>&copy; 2025 Prashant Sah — All Rights Reserved</p>
+    <div class="skill-block">
+      <div class="skill-block-icon"><i class="fas fa-chart-line"></i></div>
+      <div class="skill-block-name">Data Science</div>
+      <div class="skill-tags">
+        <span class="stag">Pandas</span>
+        <span class="stag">NumPy</span>
+        <span class="stag">Scikit-learn</span>
+        <span class="stag">Matplotlib</span>
+        <span class="stag">Seaborn</span>
+        <span class="stag">Flask</span>
+        <span class="stag">Qualtrics</span>
+        <span class="stag">Power BI</span>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <div class="skill-block-icon"><i class="fas fa-brain"></i></div>
+      <div class="skill-block-name">ML / AI</div>
+      <div class="skill-tags">
+        <span class="stag">PyTorch</span>
+        <span class="stag">LSTM</span>
+        <span class="stag">Transformers</span>
+        <span class="stag">State Space Models</span>
+        <span class="stag">NLP / NLTK</span>
+        <span class="stag">Deep Learning</span>
+        <span class="stag">RAG</span>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <div class="skill-block-icon"><i class="fas fa-tools"></i></div>
+      <div class="skill-block-name">Tools</div>
+      <div class="skill-tags">
+        <span class="stag">Git / GitHub</span>
+        <span class="stag">Jupyter</span>
+        <span class="stag">VS Code</span>
+        <span class="stag">RStudio</span>
+        <span class="stag">Excel</span>
+        <span class="stag">Power BI</span>
+        <span class="stag">LaTeX</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header reveal">
+    <span class="section-tag">03</span>
+    <h2 class="section-title">Projects</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="projects-grid reveal">
+
+    <div class="project-card">
+      <div class="project-num">01</div>
+      <div class="project-body">
+        <div class="project-meta">
+          <span class="project-year">2024</span>
+          <div class="project-tags">
+            <span class="project-tag">PyTorch</span>
+            <span class="project-tag">LSTM</span>
+            <span class="project-tag">NLTK</span>
+          </div>
         </div>
-    </footer>
+        <h3 class="project-title">Next Word Predictor</h3>
+        <p class="project-desc">
+          LSTM-based next-word prediction model built from scratch in PyTorch using an embedding → LSTM → linear architecture.
+          Full NLP pipeline: NLTK tokenization, 249-token vocabulary, 631 sequences, padded batching (max length: 127).
+          Trained 50 epochs with Adam + cross-entropy loss — hit <strong class="accent-text">99.52% accuracy</strong> with final loss of 1.35.
+          Supports both single-step and iterative autocomplete-style generation.
+        </p>
+        <div class="project-links">
+          <a href="https://github.com/prashantsah2061/word_predictor" target="_blank" rel="noopener" class="project-link">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+    </div>
 
-    <script src="script.js?v=1"></script>
+    <div class="project-card">
+      <div class="project-num">02</div>
+      <div class="project-body">
+        <div class="project-meta">
+          <span class="project-year">2024</span>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Whisper</span>
+            <span class="project-tag">RAG</span>
+            <span class="project-tag">BGE-M3</span>
+          </div>
+        </div>
+        <h3 class="project-title">Video Content RAG System</h3>
+        <p class="project-desc">
+          End-to-end ML pipeline that ingests video, transcribes audio via OpenAI Whisper, and builds semantic search
+          using BGE-M3 embeddings + cosine similarity for context-aware information retrieval.
+          Automated data ingestion and parallel processing of JSON and multimedia datasets using pandas, NumPy, and Joblib.
+        </p>
+        <div class="project-links">
+          <a href="https://github.com/prashantsah2061/Video-Based-RAG-System" target="_blank" rel="noopener" class="project-link">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">03</div>
+      <div class="project-body">
+        <div class="project-meta">
+          <span class="project-year">2024</span>
+          <div class="project-tags">
+            <span class="project-tag">Flask</span>
+            <span class="project-tag">Random Forest</span>
+            <span class="project-tag">Render</span>
+          </div>
+        </div>
+        <h3 class="project-title">California Housing Price Predictor</h3>
+        <p class="project-desc">
+          <strong class="accent-text">97.1% R²</strong> using Random Forest with 5-fold cross-validation (96.6% ± 0.6%).
+          Flask app with 9-feature ML pipeline handling 1,000+ records, deployed on Render with RESTful endpoints
+          supporting batch CSV upload up to 16MB. CI/CD via GitHub — 6–11 min deploy with auto model retraining.
+        </p>
+        <div class="project-links">
+          <a href="https://github.com/prashantsah2061/California-house-pricing" target="_blank" rel="noopener" class="project-link">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+          <a href="https://lnkd.in/gj7pV-sx" target="_blank" rel="noopener" class="project-link">
+            <i class="fas fa-external-link-alt"></i> Live Demo
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">04</div>
+      <div class="project-body">
+        <div class="project-meta">
+          <span class="project-year">Apr 2026</span>
+          <div class="project-tags">
+            <span class="project-tag">Web Dev</span>
+            <span class="project-tag">Collaborative</span>
+          </div>
+        </div>
+        <h3 class="project-title">NJAS Judging Website</h3>
+        <p class="project-desc">
+          Took over the New Jersey Academy of Science judging website after the original developer became unavailable.
+          Partnered with two peers and the NJAS team to deliver updates ahead of the competition cycle —
+          modified judging logic and user flows, patched bugs, and documented changes for future handoffs.
+        </p>
+        <div class="project-links">
+          <span class="project-link-coming">🔒 Internal / Organization</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">05</div>
+      <div class="project-body">
+        <div class="project-meta">
+          <span class="project-year">WIP</span>
+          <div class="project-tags">
+            <span class="project-tag">Folium</span>
+            <span class="project-tag">NASA FIRMS</span>
+            <span class="project-tag">ML</span>
+          </div>
+        </div>
+        <h3 class="project-title">Wildfire Risk Prediction Tool</h3>
+        <p class="project-desc">
+          ML + mapping tool predicting wildfire risk zones using NASA FIRMS satellite data and
+          live weather APIs. Renders interactive Folium maps for visual risk analysis. In progress.
+        </p>
+        <div class="project-links">
+          <span class="project-link-coming">⏳ Coming soon</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header reveal">
+    <span class="section-tag">04</span>
+    <h2 class="section-title">Experience</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="exp-period">Summer 2026 – Present</div>
+      <div class="exp-role">Data Analyst Intern</div>
+      <div class="exp-place">Office of Institutional Research · Caldwell University · Caldwell, NJ</div>
+      <div class="exp-desc">
+        Developing and launching surveys using Qualtrics, covering data collection, validation, and analysis.
+        Cleaning, organizing, and analyzing institutional datasets using Excel, R (RStudio), and Power BI.
+        Building interactive dashboards and visualizations to communicate research findings to faculty, staff,
+        and administration. Conducting statistical analysis and data mining to extract actionable insights from
+        complex datasets. Performing quality assurance checks to identify and resolve data inconsistencies.
+        Drafting internal documentation including methodology guides, data dictionaries, and how-to guides.
+        Collaborating with the research team to support ongoing institutional and programmatic review projects.
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="exp-period">Fall 2025 – Present</div>
+      <div class="exp-role">Undergraduate Research Assistant</div>
+      <div class="exp-place">Caldwell University · Advisor: Prof. Veksler</div>
+      <div class="exp-desc">
+        Comparative research on sequence-modeling architectures — LSTMs, Transformers, and State Space Models (Mamba) —
+        evaluating performance, training efficiency, and memory usage as sequence length scales.
+        Designing controlled experiments to characterize long-range dependency handling and computational trade-offs.
+        Implementing models in PyTorch with profiling instrumentation to quantify GPU memory, wall-clock training time, and inference throughput.
+        Synthesizing findings into technical write-ups and presenting at regular research meetings.
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="exp-period">Jan 2025 – Dec 2025</div>
+      <div class="exp-role">Teaching Assistant — CS 196 &amp; CS 302</div>
+      <div class="exp-place">Caldwell University · Caldwell, NJ</div>
+      <div class="exp-desc">
+        <strong class="exp-strong">CS 196 · Programming II (Jan–May 2025):</strong> Assisted instruction, assignment design, and grading for 50+ students covering OOP, recursion, data structures, and data manipulation. Led hands-on lab sessions on data analysis and visualization using NumPy, Pandas, Matplotlib, and Seaborn. Held office hours and debugging sessions to reinforce fundamentals.<br><br>
+        <strong class="exp-strong">CS 302 · Design and Analysis of Algorithms (Aug–Dec 2025):</strong> Supported 15 students in algorithm design, graph theory, complexity analysis, and code optimization. Guided learners through divide-and-conquer, dynamic programming, greedy algorithms, and graph traversal. Reviewed code for efficiency, correctness, and asymptotic complexity.
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="exp-period">Sept 2024 – Present</div>
+      <div class="exp-role">Peer Tutor — Academic Success Center</div>
+      <div class="exp-place">Caldwell University · Caldwell, NJ</div>
+      <div class="exp-desc">
+        Tutored 25+ students in Python, algorithms, web development, discrete math, and algorithmic logic.
+        Helped students apply programming concepts to data analysis tasks and efficient code design.
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="exp-period">Jan 2024 – Present</div>
+      <div class="exp-role">Media Assistant</div>
+      <div class="exp-place">Caldwell University · Caldwell, NJ</div>
+      <div class="exp-desc">
+        Manage AV setup, operation, and teardown for campus events, lectures, and livestreams.
+        Operate cameras, microphones, mixing boards, and video-conferencing systems — troubleshooting
+        in real time during live events. Produce and edit multimedia content in support of university communications.
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="exp-period">July 2024 – Present</div>
+      <div class="exp-role">Student Technician — IT Department</div>
+      <div class="exp-place">Caldwell University · Caldwell, NJ</div>
+      <div class="exp-desc">
+        Supported campus-wide IT systems for students, faculty, and staff. Rebuilt and configured computers,
+        troubleshot portal access and hardware/software issues, and collaborated with IT staff to maintain
+        hardware, software, and network integrity.
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="exp-period">July 2024 – May 2026</div>
+      <div class="exp-role">Campus Store Team Member — Barnes &amp; Noble</div>
+      <div class="exp-place">Caldwell University · Caldwell, NJ</div>
+      <div class="exp-desc">
+        Analyzed textbook inventory, enrollment data, and sales trends to forecast demand and maintain accurate stock.
+        Used POS and inventory systems to ensure accurate data entry and support data-driven operational decisions.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header reveal">
+    <span class="section-tag">05</span>
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="contact-layout">
+    <div class="reveal">
+      <p class="contact-left-text">
+        Interested in discussing <em>research, PhD programs, or ML</em> —
+        I'm always happy to connect.
+      </p>
+      <p class="contact-sub">
+        I'm actively preparing for PhD applications in Machine Learning and Computer Science.
+        If you're a faculty member working on sequence modeling, deep learning, or related areas,
+        I'd genuinely love to hear about your work.
+      </p>
+      <div class="contact-cta">
+        <a href="mailto:prashantsah2061@gmail.com" class="btn-primary">
+          <i class="fas fa-envelope"></i> Send Email
+        </a>
+        <a href="https://linkedin.com/in/prashantsah" target="_blank" rel="noopener" class="btn-outline">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-links reveal reveal-delay-2">
+      <a href="mailto:prashantsah2061@gmail.com" class="contact-link">
+        <div class="contact-link-icon"><i class="fas fa-envelope"></i></div>
+        <div class="contact-link-text">
+          <div class="contact-link-label">Email</div>
+          <div class="contact-link-value">prashantsah2061@gmail.com</div>
+        </div>
+        <div class="contact-link-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <a href="https://linkedin.com/in/prashantsah" target="_blank" rel="noopener" class="contact-link">
+        <div class="contact-link-icon"><i class="fab fa-linkedin"></i></div>
+        <div class="contact-link-text">
+          <div class="contact-link-label">LinkedIn</div>
+          <div class="contact-link-value">linkedin.com/in/prashantsah</div>
+        </div>
+        <div class="contact-link-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <a href="https://github.com/prashantsah2061" target="_blank" rel="noopener" class="contact-link">
+        <div class="contact-link-icon"><i class="fab fa-github"></i></div>
+        <div class="contact-link-text">
+          <div class="contact-link-label">GitHub</div>
+          <div class="contact-link-value">github.com/prashantsah2061</div>
+        </div>
+        <div class="contact-link-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2025 Prashant Sah — All Rights Reserved</div>
+  <div class="footer-socials">
+    <a href="https://github.com/prashantsah2061" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://linkedin.com/in/prashantsah" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:prashantsah2061@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+  </div>
+</footer>
+
+<button id="btt" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<script src="script.js"></script>
 </body>
-
 </html>
